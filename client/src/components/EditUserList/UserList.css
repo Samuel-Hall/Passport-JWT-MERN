@@ -1,0 +1,18 @@
+.userList {
+    color: white;
+    background-color: #323433;
+    border: 5px solid #fdf0b5;
+    padding: 20px;
+    margin:5px 0px;
+  }
+
+  button {
+      color: #323433;
+      background-color: #fdf0b5;
+  }
+
+  button:hover {
+      color: grey;
+  }
+
+  

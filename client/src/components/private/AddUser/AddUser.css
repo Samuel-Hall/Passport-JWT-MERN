@@ -1,0 +1,23 @@
+.addUserForm {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #323433;
+  border: 5px solid #fdf0b5;
+}
+
+.addUserForm form {
+  margin: 20px;
+}
+
+.addUserForm input,
+.addUserForm textarea {
+  color: white;
+}
+
+.addUserForm h3 {
+  font-family: "Righteous", cursive;
+  color: #fdf0b5;
+  text-align: center;
+  margin-top: 5px;
+}
+/*# sourceMappingURL=AddUser.css.map */

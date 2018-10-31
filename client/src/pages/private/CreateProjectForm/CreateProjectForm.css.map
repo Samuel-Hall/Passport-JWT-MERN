@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,cAAc,CAAC;EACb,MAAM,EAAE,2BAA2B;EACnC,OAAO,EAAE,IAAI;EACb,gBAAgB,ECFT,OAAO;EDGd,MAAM,EAAE,GAAG,CAAC,KAAK,CCFT,OAAO;CDmBhB;;AArBD,AAME,cANY,CAMZ,IAAI,CAAC;EACH,MAAM,EAAE,IAAI;CACb;;AARH,AAUE,cAVY,CAUZ,KAAK;AAVP,cAAc,CAWZ,QAAQ,CAAC;EACP,KAAK,EAAE,KAAK;CACb;;AAbH,AAeE,cAfY,CAeZ,EAAE,CAAC;EACD,WAAW,EAAE,oBAAoB;EACjC,KAAK,ECfC,OAAO;EDgBb,UAAU,EAAE,MAAM;EAClB,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "CreateProjectForm.scss",
+        "../../../utils/_variables.scss"
+    ],
+    "names": [],
+    "file": "CreateProjectForm.css"
+}

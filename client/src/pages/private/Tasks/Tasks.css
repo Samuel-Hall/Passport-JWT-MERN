@@ -1,0 +1,10 @@
+.btn {
+  background-color: #fdf0b5;
+  color: #323433;
+}
+
+.btn:hover,
+.btn-large:hover {
+  background-color: #fdf0b5;
+}
+/*# sourceMappingURL=Tasks.css.map */

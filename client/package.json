@@ -1,0 +1,42 @@
+{
+  "name": "mern",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:3001/",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "css-loader": "^1.0.0",
+    "draft-js": "^0.10.5",
+    "draft-js-export-html": "^1.2.0",
+    "draft-js-import-html": "^1.2.1",
+    "draft-js-inline-toolbar-plugin": "^3.0.0",
+    "draft-js-linkify-plugin": "^2.0.1",
+    "draft-js-plugins-editor": "^2.1.1",
+    "draft-js-side-toolbar-plugin": "^3.0.1",
+    "draft-js-static-toolbar-plugin": "^3.0.0",
+    "immutable": "^3.8.2",
+    "moment": "^2.22.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-materialize": "^2.4.6",
+    "react-moment": "^0.8.2",
+    "react-password-mask": "^3.3.1",
+    "react-render-html": "^0.6.0",
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.14",
+    "react-select": "^2.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "homepage": "https://git.heroku.com/serene-savannah-92623.git",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

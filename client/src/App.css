@@ -1,0 +1,25 @@
+select {
+  display: block;
+}
+
+p {
+  font-family: "Raleway", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Righteous", cursive;
+}
+
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+  position: absolute;
+  opacity: 1 !important;
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 600px) {
+}

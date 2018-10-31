@@ -1,0 +1,12 @@
+input[type="radio"] {
+  -webkit-appearance: radio !important;
+}
+
+.cthreadCard {
+  color: white;
+  border: 5px solid #323433;
+  background-color: #a9bcc2;
+  padding: 20px;
+  margin-bottom: 5px;
+}
+/*# sourceMappingURL=CreateThreadForm.css.map */

@@ -1,0 +1,41 @@
+.signIn {
+  padding: 20px;
+  margin: 20px;
+  background-color: #323433;
+  border: 5px solid #fdf0b5;
+}
+
+.signIn input,
+.signIn textarea {
+  color: white;
+}
+
+.signIn h4 {
+  font-family: "Righteous", cursive;
+  color: #fdf0b5 !important;
+  text-align: center;
+}
+
+.signIn .card-content {
+  margin: 5px 20px 5px 20px !important;
+}
+
+#btn1 {
+  background-color: #fdf0b5;
+  color: #323433;
+}
+
+#btn2 {
+  float: right;
+  background-color: #fdf0b5;
+  color: #323433;
+}
+
+#btn1:hover {
+  color: #eaeaea;
+}
+
+#btn2:hover {
+  color: #eaeaea;
+}
+/*# sourceMappingURL=Login.css.map */

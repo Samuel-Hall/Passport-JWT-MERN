@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,KAAK,CAAC;EACJ,SAAS,EAAE,UAAU;CAWtB;;AAZD,AAGE,KAHG,CAGH,YAAY,CAAC;EACX,MAAM,EAAE,GAAG,CAAC,KAAK,CCHZ,OAAO;EDIZ,gBAAgB,ECLV,OAAO;CDWd;;AAXH,AAOI,KAPC,CAGH,YAAY,CAIV,CAAC,CAAC;EACA,MAAM,EAAE,aAAa;EACrB,KAAK,ECRF,OAAO;CDSX;;AAGL,AAAA,KAAK,AAAA,MAAM,CAAC;EACV,SAAS,EAAE,WAAW;EACtB,MAAM,EAAE,OAAO;CAChB",
+    "sources": [
+        "ProjectCard.scss",
+        "../../../utils/_variables.scss"
+    ],
+    "names": [],
+    "file": "ProjectCard.css"
+}

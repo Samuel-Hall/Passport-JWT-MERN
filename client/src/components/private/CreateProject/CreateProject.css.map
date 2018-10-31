@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,iBAAiB,CAAC;EAChB,gBAAgB,ECAT,OAAO;EDCd,MAAM,EAAE,GAAG,CAAC,KAAK,CCAT,OAAO;CDOhB;;AATD,AAIE,iBAJe,CAIf,WAAW,CAAC;EACV,WAAW,EAAE,oBAAoB;EACjC,KAAK,ECJC,OAAO;EDKb,UAAU,EAAE,MAAM;CACnB",
+    "sources": [
+        "CreateProject.scss",
+        "../../../utils/_variables.scss"
+    ],
+    "names": [],
+    "file": "CreateProject.css"
+}

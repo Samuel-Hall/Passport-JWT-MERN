@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,KAAK,CAAA,AAAA,IAAC,CAAK,OAAO,AAAZ,EAAc;EAClB,kBAAkB,EAAE,gBAAgB;CACrC;;AAED,AAAA,OAAO,CAAC;EACN,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,GAAG,CAAC,KAAK,CCLV,OAAO;EDMd,gBAAgB,ECRT,OAAO;EDSd,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,GAAG;CACnB",
+    "sources": [
+        "CreateTaskForm.scss",
+        "../../../utils/_variables.scss"
+    ],
+    "names": [],
+    "file": "CreateTaskForm.css"
+}

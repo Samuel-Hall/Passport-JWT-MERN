@@ -1,0 +1,41 @@
+#topNav {
+  background-color: #323433;
+  border-bottom: 5px solid #fdf0b5;
+}
+
+#topNav .brand-logo {
+  font-family: "Righteous", cursive;
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+#topNav a {
+  font-size: 15px;
+  color: #fdf0b5;
+}
+
+#topNav li a {
+  font-family: "Raleway", sans-serif;
+  color: #fdf0b5;
+}
+
+#topNav li a:hover {
+  background-color: transparent;
+  color: #eaeaea;
+}
+
+.z-depth-1,
+nav,
+.card-panel,
+.card,
+.toast,
+.btn,
+.btn-large,
+.btn-floating,
+.dropdown-content,
+.collapsible,
+.side-nav {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+/*# sourceMappingURL=Nav.css.map */

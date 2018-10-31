@@ -1,0 +1,13 @@
+@import "../../../utils/variables";
+
+input[type="radio"] {
+  -webkit-appearance: radio !important;
+}
+
+.ctCard {
+  color: white;
+  border: 5px solid map-get($colors, third);
+  background-color: map-get($colors, first);
+  padding: 20px;
+  margin-bottom: 5px;
+}

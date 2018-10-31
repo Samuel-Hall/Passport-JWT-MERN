@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,SAAS,CAAC;EACR,QAAQ,EAAE,QAAQ;EAClB,IAAI,EAAE,GAAG;EACT,MAAM,EAAE,WAAW;CACpB;;AAED,AAAA,SAAS,CAAC;EACR,QAAQ,EAAE,QAAQ;EAClB,IAAI,EAAE,GAAG;CACV",
+    "sources": [
+        "UsersSidebar.scss",
+        "../../../utils/_variables.scss"
+    ],
+    "names": [],
+    "file": "UsersSidebar.css"
+}

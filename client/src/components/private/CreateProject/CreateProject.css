@@ -1,0 +1,11 @@
+#createProjectBtn {
+  background-color: #323433;
+  border: 5px solid #fdf0b5;
+}
+
+#createProjectBtn .card-title {
+  font-family: "Righteous", cursive;
+  color: #fdf0b5;
+  text-align: center;
+}
+/*# sourceMappingURL=CreateProject.css.map */
