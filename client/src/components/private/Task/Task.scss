@@ -1,9 +1,0 @@
-@import "../../../utils/variables";
-
-.taskCard {
-  color: white;
-  border: 5px solid map-get($colors, third);
-  background-color: map-get($colors, first);
-  padding: 20px;
-  margin-bottom: 5px;
-}
