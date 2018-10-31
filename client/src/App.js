@@ -2,13 +2,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // Import Pages
-import Public from "./pages/public/Public";
 import Login from "./pages/public/Login";
 import PrivateMaster from "./pages/private/PrivateMaster";
 import NoMatch from "./pages/public/NoMatch";
-import PostDetail from "./pages/public/PostDetail";
-import EditUser from "./pages/temp/EditUser";
-import AboutUs from "./pages/temp/AboutUs";
 // Import Private Route
 import PrivateRoute from "./components/private/PrivateRoute";
 // Import API
@@ -84,10 +80,9 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Switch>
-            <Route exact path="/" component={Public} />
             <Route
               exact
-              path="/login"
+              path="/"
               render={props => (
                 <Login updateUser={this.updateUser} {...props} />
               )}
@@ -100,10 +95,6 @@ class App extends React.Component {
               getUser={this.getUser}
               user={this.state.user}
             />
-            <Route path="/posts/:id" component={PostDetail} />
-            <Route exact path="/edit-user" component={EditUser} />
-            <Route exact path="/users" component={EditUser} />
-            <Route exact path="/about" component={AboutUs} />
             <Route component={NoMatch} />
           </Switch>
         </Router>
