@@ -1,23 +1,18 @@
 import React from "react";
-import {
-  Link
-} from "react-router-dom";
-import "./Nav.css";
+import { Link } from "react-router-dom";
+import "./nav.css";
 
 const Nav = props => (
   <nav id="topNav">
     {props.isPublic ? (
       <div className="nav-wrapper">
-        <a className="brand-logo">Dialectic</a>
+        <a className="brand-logo">Passport-JWT-MERN</a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
-        <li>
-            <Link to="/about">About</Link>
+          <li>
+            <Link to="/">Login</Link>
           </li>
           <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/private">Admin Login</Link>
+            <Link to="/private">Private View</Link>
           </li>
         </ul>
       </div>
@@ -31,16 +26,7 @@ const Nav = props => (
         </a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
-            <a onClick={() => props.loadPage("users")}>Users</a>
-          </li>
-          <li>
-            <a onClick={() => props.loadPage("projects")}>Projects</a>
-          </li>
-          <li>
             <a onClick={props.handleLogout}>Log out</a>
-          </li>
-          <li>
-            <Link to="/">Public View</Link>
           </li>
         </ul>
       </div>

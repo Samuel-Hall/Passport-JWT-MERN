@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // Import Pages
 import Login from "./pages/public/Login";
+import SignUp from "./pages/public/SignUp";
 import PrivateMaster from "./pages/private/PrivateMaster";
 import NoMatch from "./pages/public/NoMatch";
 // Import Private Route
@@ -85,6 +86,13 @@ class App extends React.Component {
               path="/"
               render={props => (
                 <Login updateUser={this.updateUser} {...props} />
+              )}
+            />
+            <Route
+              exact
+              path="/signup"
+              render={props => (
+                <SignUp updateUser={this.updateUser} {...props} />
               )}
             />
             <PrivateRoute
