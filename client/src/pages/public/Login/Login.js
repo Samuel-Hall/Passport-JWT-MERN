@@ -32,6 +32,11 @@ class Login extends Component {
 
   handleLogin(event) {
     event.preventDefault();
+    console.log("User Input Data:");
+    console.table({
+      Username: this.state.username,
+      Password: this.state.password
+    });
 
     UsersAPI.loginUser({
       username: this.state.username,
