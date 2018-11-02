@@ -7,8 +7,12 @@ export default {
   checkForUsers: function() {
     return axios.get("/api/users/check");
   },
-  getCurrentUser: function() {
-    return axios.get("/api/users/current");
+  // Secured API route, requests current user data.
+  getCurrentUser: function(token) {
+    console.log("getCurrentUser, token:", token);
+    return axios.get("/api/users/current", {
+      headers: { Authorization: `Bearer ${token}` }
+    });
   },
   signupUser: function(newUser) {
     return axios.post("/api/users/signup", newUser);

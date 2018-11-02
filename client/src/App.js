@@ -35,7 +35,11 @@ class App extends React.Component {
   }
 
   getUser() {
-    UsersAPI.getCurrentUser().then(response => {
+    // Get JWT from local storage.
+    const token = localStorage.getItem("token");
+    console.log("getUser, token:", token);
+    // Pass token to secured route
+    UsersAPI.getCurrentUser(token).then(response => {
       if (response.data.user) {
         this.setState({
           loggedIn: true,
@@ -46,8 +50,9 @@ class App extends React.Component {
           }
         });
       } else {
+        console.log("There is no user: ", response.data);
+        this.handleLogout();
         this.setState({
-          loggedIn: false,
           user: null
         });
       }
@@ -59,7 +64,7 @@ class App extends React.Component {
   }
 
   handleLogout(event) {
-    event.preventDefault();
+    // event.preventDefault();
     // Remove JWTs from local storage.
     localStorage.removeItem("token");
     localStorage.removeItem("refreshToken");

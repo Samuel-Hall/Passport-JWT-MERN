@@ -6,30 +6,31 @@ module.exports = {
     // Get auth header value
     const bearerHeader = req.headers["authorization"];
     console.log("verifyToken, bearerHeader:", bearerHeader);
+
+    // Split at the space
+    const bearer = bearerHeader.split(" ");
+    // Get token from array
+    const bearerToken = bearer[1];
+    console.log("bearerToken:", bearerToken);
     // Check if bearer is undefined
-    if (typeof bearerHeader !== "undefined") {
-      // Split at the space
-      const bearer = bearerHeader.split(" ");
-      // Get token from array
-      const bearerToken = bearer[1];
-      console.log("bearerToken:", bearerToken);
+    if (bearerToken !== "null") {
       // Set the token
       req.token = bearerToken;
       // Next middleware
       next();
     } else {
       // Forbidden
-      res.sendStatus(403);
+      res.json({ message: "Token not provided" });
     }
   },
   verifyToken: function(req, res, next) {
     console.log("Attempting to verify token:", req.token);
     jwt.verify(req.token, "disco-panda", (err, authData) => {
       if (err) {
-        res.sendStatus(403);
-        // res.json({
-        //   message: "Token is not valid"
-        // });
+        // res.sendStatus(403);
+        res.json({
+          message: "Token is not valid"
+        });
       } else {
         next();
       }

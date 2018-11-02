@@ -2,7 +2,6 @@ const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
 const passport = require("../../passport/");
 const jwt = require("jsonwebtoken");
-const randtoken = require("rand-token");
 const jwtVerify = require("./jwt");
 
 // Matches with "/api/users"
@@ -14,13 +13,15 @@ router
 router.route("/check").get(usersController.findOne);
 
 // Matches with "/api/users/current"
-router.route("/current").get((req, res, next) => {
-  if (req.user) {
-    res.json({ user: req.user, authenticated: req.isAuthenticated() });
-  } else {
-    res.json({ user: null });
-  }
-});
+router
+  .route("/current")
+  .get(jwtVerify.confirmToken, jwtVerify.verifyToken, (req, res, next) => {
+    if (req.user) {
+      res.json({ user: req.user, authenticated: req.isAuthenticated() });
+    } else {
+      res.json({ user: null });
+    }
+  });
 
 //User sign up on /api/users/signup
 router.route("/signup").post(usersController.create);
