@@ -1,13 +1,17 @@
 const router = require("express").Router();
-const User = require("../../models/user");
 const usersController = require("../../controllers/usersController");
 const passport = require("../../passport/");
+const jwt = require("jsonwebtoken");
+const randtoken = require("rand-token");
+const jwtVerify = require("./jwt");
 
 // Matches with "/api/users"
-router.route("/").get(usersController.findAll);
+router
+  .route("/")
+  .get(jwtVerify.confirmToken, jwtVerify.verifyToken, usersController.findAll);
 
 // Matches with "/api/users/check"
-router.route("/check").get(usersController.findAll);
+router.route("/check").get(usersController.findOne);
 
 // Matches with "/api/users/current"
 router.route("/current").get((req, res, next) => {
@@ -35,7 +39,19 @@ router.route("/login").post(
       lastName: req.user.lastName,
       isActive: req.user.isActive
     };
-    res.send(userInfo);
+    // Sign a JSON web token, send along with user data in response.
+    jwt.sign(
+      { userInfo },
+      "disco-panda",
+      { expiresIn: "30s" },
+      (err, token) => {
+        if (err) throw err;
+        res.json({
+          token,
+          userInfo
+        });
+      }
+    );
   }
 );
 

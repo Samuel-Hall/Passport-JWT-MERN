@@ -12,7 +12,8 @@ const userSchema = new Schema({
   firstName: { type: String, required: false, default: null },
   lastName: { type: String, required: false, default: null },
   title: { type: String, required: false, default: null },
-  isActive: { type: Boolean, default: true }
+  isActive: { type: Boolean, default: true },
+  session: { type: Boolean, default: false }
 });
 
 // Define schema methods

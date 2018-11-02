@@ -9,12 +9,14 @@ const PrivateRoute = ({
   user,
   getUser
 }) => {
-  let session = sessionStorage.getItem("disco-panda");
+  // Get JWT from local storage.
+  const token = localStorage.getItem("token");
+
   return (
     <Route
       path={url}
       render={props =>
-        session ? (
+        token ? (
           <Component
             handleLogout={handleLogout}
             user={user}

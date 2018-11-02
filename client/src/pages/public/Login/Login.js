@@ -45,18 +45,20 @@ class Login extends Component {
       .then(response => {
         document.getElementById("loginForm").reset();
         if (response.status === 200) {
-          console.log("response data", response.data);
+          console.log("response data table:");
+          console.table(response.data);
           // Udate App.js state
           this.props.updateUser({
             loggedIn: true,
             user: {
-              username: response.data.username,
-              firstName: response.data.firstName,
-              lastName: response.data.lastName
+              username: response.data.userInfo.username,
+              firstName: response.data.userInfo.firstName,
+              lastName: response.data.userInfo.lastName
             }
           });
-          // Setting session storage value to access on refresh
-          sessionStorage.setItem("disco-panda", response.data.id);
+          // Save the JSON Web Tokens to local storage
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("refreshToken", response.data.refreshToken);
           // update the state to redirect to private view
           this.setState({
             redirectTo: "/private"

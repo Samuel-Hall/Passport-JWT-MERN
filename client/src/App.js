@@ -60,8 +60,9 @@ class App extends React.Component {
 
   handleLogout(event) {
     event.preventDefault();
-    // Remove user session
-    sessionStorage.removeItem("disco-panda");
+    // Remove JWTs from local storage.
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshToken");
     UsersAPI.logoutUser({ user: this.state.username })
       .then(response => {
         if (response.status === 200) {
