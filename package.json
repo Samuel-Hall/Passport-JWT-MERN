@@ -14,7 +14,8 @@
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build",
+    // "build": "cd client && npm run build",
+    "build": "SET NODE_ENV=production && webpack-dev-server --host 127.0.0.1 --inline --history-api-fallback --content-base . ",
     "heroku-postbuild": "npm run build",
     "deploy": "yarn build && git add . && git commit -m \"Building for production\" && git push heroku master"
   },
