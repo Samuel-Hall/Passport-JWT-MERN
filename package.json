@@ -30,6 +30,7 @@
     "bcryptjs": "^2.4.3",
     "browserlist": "^1.0.1",
     "connect-mongo": "^2.0.1",
+    "detect-port-alt": "^1.1.6",
     "draft-js": "^0.10.5",
     "draft-js-export-html": "^1.2.0",
     "draft-js-import-html": "^1.2.1",
