@@ -32,13 +32,15 @@ class SignUp extends Component {
 
   handleSignUp(event) {
     event.preventDefault();
-    UsersAPI.signupUser({
+    const user = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
       username: this.state.username,
       password: this.state.password
-    })
+    };
+    console.log("Signing up user", user);
+    UsersAPI.signupUser(user)
       .then(response => {
         if (!response.data.error) {
           alert(`Successful signup for new user: ${response.data.username}.`);
