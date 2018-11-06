@@ -4,7 +4,8 @@ mongoose.Promise = global.Promise;
 
 //your local database url
 //27017 is the default mongoDB port
-const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/dialectic_DB";
+const uri =
+  process.env.MONGODB_URI || "mongodb://localhost:27017/Passport-JWT-MERN_DB";
 
 if (process.env.MONGODB_URI) {
   mongoose.connect(process.env.MONGODB_URI);
