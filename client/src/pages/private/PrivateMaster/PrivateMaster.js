@@ -254,7 +254,7 @@ class PrivateMaster extends Component {
               handleSignUp={this.handleSignUp}
             />
           ) : (
-            "404"
+            "stuff"
           )}
         </Row>
       </div>

@@ -35,5 +35,11 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "http://ec2-54-84-162-141.compute-1.amazonaws.com/"
+  "homepage": "http://ec2-54-84-162-141.compute-1.amazonaws.com/",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

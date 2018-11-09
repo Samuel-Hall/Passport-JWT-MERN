@@ -28,10 +28,11 @@ router.route("/signup").post(usersController.create);
 
 //User login on /api/users/login
 router.route("/login").post(
-  function(req, res, next) {
-    next();
-  },
+  // function(req, res, next) {
+  // next();
+  // },
   passport.authenticate("local"),
+  // Handle success
   (req, res) => {
     var userInfo = {
       id: req.user.id,
@@ -44,7 +45,7 @@ router.route("/login").post(
     jwt.sign(
       { userInfo },
       "disco-panda",
-      { expiresIn: "30s" },
+      { expiresIn: "10m" },
       (err, token) => {
         if (err) throw err;
         res.json({

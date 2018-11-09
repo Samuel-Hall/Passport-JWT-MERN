@@ -46,23 +46,28 @@ class Login extends Component {
         document.getElementById("loginForm").reset();
         if (response.status === 200) {
           console.log("response data table:");
-          console.table(response.data);
-          // Udate App.js state
-          this.props.updateUser({
-            loggedIn: true,
-            user: {
-              username: response.data.userInfo.username,
-              firstName: response.data.userInfo.firstName,
-              lastName: response.data.userInfo.lastName
-            }
-          });
-          // Save the JSON Web Tokens to local storage
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("refreshToken", response.data.refreshToken);
-          // update the state to redirect to private view
-          this.setState({
-            redirectTo: "/private"
-          });
+          console.table(response);
+          // If an error message is returned, display the error. Otherwise, continue with user info
+          if (response.data.message) {
+            alert(response.data.message);
+          } else {
+            // Udate App.js state
+            this.props.updateUser({
+              loggedIn: true,
+              user: {
+                username: response.data.userInfo.username,
+                firstName: response.data.userInfo.firstName,
+                lastName: response.data.userInfo.lastName
+              }
+            });
+            // Save the JSON Web Tokens to local storage
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("refreshToken", response.data.refreshToken);
+            // update the state to redirect to private view
+            this.setState({
+              redirectTo: "/private"
+            });
+          }
         }
       })
       .catch(error => {
