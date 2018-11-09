@@ -36,7 +36,7 @@ class Dropdown extends React.Component {
         </div>
 
         {this.state.displayMenu ? (
-          <ul>
+          <ul className="ul-drop">
             <li>
               <a className="active" href="#Create Page">
                 Create Page
