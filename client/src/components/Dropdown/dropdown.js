@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./dropdown.css";
 
 class Dropdown extends React.Component {
@@ -52,10 +53,7 @@ class Dropdown extends React.Component {
               <a href="#Manage Ads">Manage Ads</a>
             </li>
             <li>
-              <a href="#Activity Logs">Activity Logs</a>
-            </li>
-            <li>
-              <a href="#Setting">Setting</a>
+              <Link to="/account">Account Info</Link>
             </li>
             <li onClick={this.props.handleLogout}>
               <a href="#Log Out">Log Out</a>

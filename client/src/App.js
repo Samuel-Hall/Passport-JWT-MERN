@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./pages/public/Login";
 import SignUp from "./pages/public/SignUp";
 import PrivateMaster from "./pages/private/PrivateMaster";
+import Account from "./pages/private/Account";
 import NoMatch from "./pages/public/NoMatch";
 // Import Private Route
 import PrivateRoute from "./components/private/PrivateRoute";
@@ -20,7 +21,8 @@ class App extends React.Component {
       user: {
         username: "",
         firstName: "",
-        lastName: ""
+        lastName: "",
+        email: ""
       }
     };
 
@@ -46,9 +48,11 @@ class App extends React.Component {
           user: {
             username: response.data.user.username,
             firstName: response.data.user.firstName,
-            lastName: response.data.user.lastName
+            lastName: response.data.user.lastName,
+            email: response.data.user.email
           }
         });
+        console.log("email", response.data.user.email);
       } else {
         console.log("There is no user: ", response.data);
         this.handleLogout();
@@ -102,8 +106,16 @@ class App extends React.Component {
               )}
             />
             <PrivateRoute
-              path="/private"
+              path="/dashboard"
               component={PrivateMaster}
+              loggedIn={this.state.loggedIn}
+              handleLogout={this.handleLogout}
+              getUser={this.getUser}
+              user={this.state.user}
+            />
+            <PrivateRoute
+              path="/account"
+              component={Account}
               loggedIn={this.state.loggedIn}
               handleLogout={this.handleLogout}
               getUser={this.getUser}

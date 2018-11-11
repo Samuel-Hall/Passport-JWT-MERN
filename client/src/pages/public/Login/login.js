@@ -57,7 +57,8 @@ class Login extends Component {
               user: {
                 username: response.data.userInfo.username,
                 firstName: response.data.userInfo.firstName,
-                lastName: response.data.userInfo.lastName
+                lastName: response.data.userInfo.lastName,
+                email: response.data.userInfo.email
               }
             });
             // Save the JSON Web Tokens to local storage
@@ -65,7 +66,7 @@ class Login extends Component {
             localStorage.setItem("refreshToken", response.data.refreshToken);
             // update the state to redirect to private view
             this.setState({
-              redirectTo: "/private"
+              redirectTo: "/dashboard"
             });
           }
         }

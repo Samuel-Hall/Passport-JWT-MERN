@@ -9,61 +9,14 @@ import Users from "../Users";
 //API Imports
 import UsersAPI from "../../../utils/usersAPI";
 // CSS Imports
-import "./PrivateMaster.css";
+import "./account.css";
 
-class PrivateMaster extends Component {
+class Account extends Component {
   constructor() {
     super();
     this.state = {
-      metadata: {
-        currentPage: "projects",
-        projectIsLoaded: false,
-        projectSubpage: "tasks",
-        userSubpage: "view",
-        currentThreadIndex: 0,
-        editProject: false,
-        createTask: false,
-        editTask: false,
-        createThread: false,
-        editThread: false,
-        createComment: false,
-        editComment: false,
-        createPost: false,
-        editPost: false
-      },
       user: {
         username: null
-      },
-      projects: [],
-      currentProject: {
-        title: "",
-        status: "",
-        summary: "",
-        funds: ""
-      },
-      newData: {
-        newUser: {
-          username: "",
-          password: "",
-          firstName: "",
-          lastName: "",
-          email: ""
-        },
-        newTask: {
-          title: "",
-          description: "",
-          funds: ""
-        },
-        newThread: {
-          title: "",
-          comment: ""
-        },
-        newComment: {
-          comment: ""
-        }
-      },
-      targetEdits: {
-        task: ""
       }
     };
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -80,31 +33,6 @@ class PrivateMaster extends Component {
         username: username
       }
     });
-  };
-
-  loadUserSubpage = page => {
-    if (page === "view") {
-      this.setState({
-        metadata: {
-          ...this.state.metadata,
-          userSubpage: "view"
-        }
-      });
-    } else if (page === "add") {
-      this.setState({
-        metadata: {
-          ...this.state.metadata,
-          userSubpage: "add"
-        }
-      });
-    } else if (page === "edit-user") {
-      this.setState({
-        metadata: {
-          ...this.state.metadata,
-          projectSubpage: "edit-user"
-        }
-      });
-    }
   };
 
   handleInputChange = event => {
@@ -194,27 +122,17 @@ class PrivateMaster extends Component {
           user={this.props.user}
         />
         <Row>
-          {this.state.metadata.currentPage === "users" ? (
-            <Users
-              // State props
-              subpage={this.state.metadata.userSubpage}
-              newUsername={this.state.newData.newUser.username}
-              newPassword={this.state.newData.newUser.password}
-              newFirstName={this.state.newData.newUser.firstName}
-              newLastName={this.state.newData.newUser.lastName}
-              newEmail={this.state.newData.newUser.email}
-              // Functions
-              loadUserSubpage={this.loadUserSubpage}
-              handleInputChange={this.handleInputChange}
-              handleSignUp={this.handleSignUp}
-            />
-          ) : (
-            <h3>This is the dashboard</h3>
-          )}
+          <h3>This is the account page. Here is the user:</h3>
+          <ul>
+            <li>Username: {this.props.user.username}</li>
+            <li>First Name: {this.props.user.firstName}</li>
+            <li>Last Name: {this.props.user.lastName}</li>
+            <li>Email: {this.props.user.email}</li>
+          </ul>
         </Row>
       </div>
     );
   }
 }
 
-export default withRouter(PrivateMaster);
+export default withRouter(Account);

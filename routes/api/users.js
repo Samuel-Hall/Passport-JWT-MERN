@@ -17,6 +17,7 @@ router
   .route("/current")
   .get(jwtVerify.confirmToken, jwtVerify.verifyToken, (req, res, next) => {
     if (req.user) {
+      console.log("req.user", req.user);
       res.json({ user: req.user, authenticated: req.isAuthenticated() });
     } else {
       res.json({ user: null });
@@ -39,6 +40,7 @@ router.route("/login").post(
       username: req.user.username,
       firstName: req.user.firstName,
       lastName: req.user.lastName,
+      email: req.user.email,
       isActive: req.user.isActive
     };
     // Sign a JSON web token, send along with user data in response.
