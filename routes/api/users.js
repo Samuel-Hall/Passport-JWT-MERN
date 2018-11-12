@@ -47,7 +47,7 @@ router.route("/login").post(
     jwt.sign(
       { userInfo },
       "disco-panda",
-      { expiresIn: "10m" },
+      { expiresIn: "30m" },
       (err, token) => {
         if (err) throw err;
         res.json({

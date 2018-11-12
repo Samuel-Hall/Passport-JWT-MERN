@@ -1,6 +1,11 @@
 // Import React
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 // Import Pages
 import Login from "./pages/public/Login";
 import SignUp from "./pages/public/SignUp";
@@ -121,7 +126,8 @@ class App extends React.Component {
               getUser={this.getUser}
               user={this.state.user}
             />
-            <Route component={NoMatch} />
+            <Route render={() => <Redirect to="/dashboard" />} />
+            {/* <Route component={NoMatch} /> */}
           </Switch>
         </Router>
       </div>

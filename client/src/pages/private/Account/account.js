@@ -6,6 +6,7 @@ import Row from "../../../components/shared/grid/Row";
 // Component Imports
 import Nav from "../../../components/shared/Nav";
 import Users from "../Users";
+import AccountInfoCard from "../../../components/private/AccountInfo/Card";
 //API Imports
 import UsersAPI from "../../../utils/usersAPI";
 // CSS Imports
@@ -15,24 +16,17 @@ class Account extends Component {
   constructor() {
     super();
     this.state = {
-      user: {
-        username: null
-      }
+      editMode: false
     };
-    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
-  componentDidMount() {
-    this.setUser(this.props.user);
-  }
-
-  setUser = username => {
-    this.setState({
-      user: {
-        ...this.state.user,
-        username: username
-      }
-    });
+  toggleEditMode = event => {
+    event.preventDefault();
+    if (!this.state.editMode) {
+      this.setState({ editMode: true });
+    } else {
+      this.setState({ editMode: false });
+    }
   };
 
   handleInputChange = event => {
@@ -122,13 +116,14 @@ class Account extends Component {
           user={this.props.user}
         />
         <Row>
-          <h3>This is the account page. Here is the user:</h3>
-          <ul>
-            <li>Username: {this.props.user.username}</li>
-            <li>First Name: {this.props.user.firstName}</li>
-            <li>Last Name: {this.props.user.lastName}</li>
-            <li>Email: {this.props.user.email}</li>
-          </ul>
+          <button className="right" onClick={this.toggleEditMode}>
+            Make Changes <i className="material-icons">edit</i>
+          </button>
+          {!this.state.editMode ? (
+            <AccountInfoCard user={this.props.user} />
+          ) : (
+            <h3>This is edit mode</h3>
+          )}
         </Row>
       </div>
     );
