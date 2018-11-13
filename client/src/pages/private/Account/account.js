@@ -7,6 +7,7 @@ import Row from "../../../components/shared/grid/Row";
 import Nav from "../../../components/shared/Nav";
 import Users from "../Users";
 import AccountInfoCard from "../../../components/private/AccountInfo/Card";
+import AccountInfoForm from "../../../components/private/AccountInfo/Form";
 //API Imports
 import UsersAPI from "../../../utils/usersAPI";
 // CSS Imports
@@ -119,11 +120,11 @@ class Account extends Component {
           <button className="right" onClick={this.toggleEditMode}>
             Make Changes <i className="material-icons">edit</i>
           </button>
-          {!this.state.editMode ? (
-            <AccountInfoCard user={this.props.user} />
-          ) : (
-            <h3>This is edit mode</h3>
-          )}
+          <AccountInfoCard
+            editMode={this.state.editMode}
+            toggleEditMode={this.toggleEditMode}
+            user={this.props.user}
+          />
         </Row>
       </div>
     );
