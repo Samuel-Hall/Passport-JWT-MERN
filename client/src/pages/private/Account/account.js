@@ -17,8 +17,41 @@ class Account extends Component {
   constructor() {
     super();
     this.state = {
-      editMode: false
+      editMode: false,
+      // Modified user data, used for updating account information
+      modUser: {
+        username: "",
+        firstName: "",
+        lastName: "",
+        email: ""
+      }
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  submitUpdate = event => {
+    event.preventDefault();
+    const id = this.props.user.id;
+    const modUser = this.state.modUser;
+    // Data to be sent in PUT request below
+    let userData = { id: id };
+    // TODO: Loop through modUser object. If a key has an empty value, do not include it in the user data for the PUT request
+    for (const key in modUser) {
+      if (modUser[key].trim() !== "") {
+        console.log("for in", modUser[key]);
+      } else {
+        console.log("It's nothing");
+      }
+    }
+  };
+
+  handleInputChange(event) {
+    this.setState({
+      modUser: {
+        ...this.state.modUser,
+        [event.target.name]: event.target.value
+      }
+    });
   }
 
   toggleEditMode = event => {
@@ -27,82 +60,6 @@ class Account extends Component {
       this.setState({ editMode: true });
     } else {
       this.setState({ editMode: false });
-    }
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    const context = event.target.getAttribute("data-context");
-    switch (context) {
-      case "project":
-        this.setState({
-          currentProject: {
-            ...this.state.currentProject,
-            [name]: value
-          }
-        });
-        break;
-      case "newUser":
-        this.setState({
-          newData: {
-            ...this.state.newData,
-            newUser: {
-              ...this.state.newData.newUser,
-              [name]: value
-            }
-          }
-        });
-        break;
-      case "createTask":
-        this.setState({
-          newData: {
-            ...this.state.newData,
-            newTask: {
-              ...this.state.newData.newTask,
-              [name]: value
-            }
-          }
-        });
-        break;
-      case "editTask":
-        const index = event.target.getAttribute("data-index");
-        const tasks = this.state.currentProject.tasks.slice();
-        tasks[tasks.length - 1 - parseInt(index, 10)] = {
-          ...tasks[tasks.length - 1 - parseInt(index, 10)],
-          [name]: value
-        };
-        this.setState({
-          currentProject: {
-            ...this.state.currentProject,
-            tasks: tasks
-          }
-        });
-        break;
-      case "createThread":
-        this.setState({
-          newData: {
-            ...this.state.newData,
-            newThread: {
-              ...this.state.newData.newThread,
-              [name]: value
-            }
-          }
-        });
-        break;
-      case "createComment":
-        this.setState({
-          newData: {
-            ...this.state.newData,
-            newComment: {
-              ...this.state.newData.newComment,
-              [name]: value
-            }
-          }
-        });
-        break;
-
-      default:
-        break;
     }
   };
 
@@ -124,6 +81,9 @@ class Account extends Component {
             editMode={this.state.editMode}
             toggleEditMode={this.toggleEditMode}
             user={this.props.user}
+            modUser={this.state.modUser}
+            submitUpdate={this.submitUpdate}
+            handleInputChange={this.handleInputChange}
           />
         </Row>
       </div>

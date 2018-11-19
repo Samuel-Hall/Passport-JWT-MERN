@@ -55,15 +55,15 @@ class Login extends Component {
             this.props.updateUser({
               loggedIn: true,
               user: {
+                id: response.data.userInfo._id,
                 username: response.data.userInfo.username,
                 firstName: response.data.userInfo.firstName,
                 lastName: response.data.userInfo.lastName,
                 email: response.data.userInfo.email
               }
             });
-            // Save the JSON Web Tokens to local storage
+            // Save the JSON Web Token to local storage
             localStorage.setItem("token", response.data.token);
-            localStorage.setItem("refreshToken", response.data.refreshToken);
             // update the state to redirect to private view
             this.setState({
               redirectTo: "/dashboard"

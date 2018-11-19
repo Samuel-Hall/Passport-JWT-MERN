@@ -39,21 +39,10 @@ class Dropdown extends React.Component {
         {this.state.displayMenu ? (
           <ul className="ul-drop">
             <li>
-              <a className="active" href="#Create Page">
-                Create Page
-              </a>
-            </li>
-            <li>
-              <a href="#Manage Pages">Manage Pages</a>
-            </li>
-            <li>
-              <a href="#Create Ads">Create Ads</a>
-            </li>
-            <li>
-              <a href="#Manage Ads">Manage Ads</a>
-            </li>
-            <li>
               <Link to="/account">Account Info</Link>
+            </li>
+            <li>
+              <Link to="/password">Reset Password</Link>
             </li>
             <li onClick={this.props.handleLogout}>
               <a href="#Log Out">Log Out</a>

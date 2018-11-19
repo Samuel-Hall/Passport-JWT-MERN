@@ -23,7 +23,9 @@ class App extends React.Component {
     super();
     this.state = {
       loggedIn: false,
+      // Current user data
       user: {
+        id: "",
         username: "",
         firstName: "",
         lastName: "",
@@ -48,16 +50,17 @@ class App extends React.Component {
     // Pass token to secured route
     UsersAPI.getCurrentUser(token).then(response => {
       if (response.data.user) {
+        console.table(response.data.user);
         this.setState({
           loggedIn: true,
           user: {
+            id: response.data.user._id,
             username: response.data.user.username,
             firstName: response.data.user.firstName,
             lastName: response.data.user.lastName,
             email: response.data.user.email
           }
         });
-        console.log("email", response.data.user.email);
       } else {
         console.log("There is no user: ", response.data);
         this.handleLogout();
@@ -121,13 +124,10 @@ class App extends React.Component {
             <PrivateRoute
               path="/account"
               component={Account}
-              loggedIn={this.state.loggedIn}
-              handleLogout={this.handleLogout}
-              getUser={this.getUser}
               user={this.state.user}
+              handleLogout={this.handleLogout}
             />
             <Route render={() => <Redirect to="/dashboard" />} />
-            {/* <Route component={NoMatch} /> */}
           </Switch>
         </Router>
       </div>

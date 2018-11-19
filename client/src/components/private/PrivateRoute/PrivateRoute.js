@@ -4,9 +4,9 @@ import { Route, Redirect } from "react-router-dom";
 const PrivateRoute = ({
   component: Component,
   path: url,
-  loggedIn,
   handleLogout,
   user,
+  modUser,
   getUser
 }) => {
   // Get JWT from local storage.
