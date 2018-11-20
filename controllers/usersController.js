@@ -41,9 +41,10 @@ module.exports = {
   update: function(req, res) {
     console.log(
       "attempting to update the following user information:",
-      req.body
+      req.body,
+      req.params.id
     );
-    // Three cases:
+    // Four cases:
     /* Case 1: Both username and email are provided in the PUT request
     --Find a db entry that has either the username OR the email, but the id does not match.
     --Check which match was found.
@@ -101,6 +102,14 @@ module.exports = {
           }
         }
       );
+    }
+
+    /* Case 4: Neither username nor email are provided, but data needs to be updated
+    --No duplicate checking needed, just findone and update.*/
+    if (!req.body.email && !req.body.username) {
+      db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
     }
   },
   remove: function(req, res) {
