@@ -23,7 +23,8 @@ export default {
   logoutUser: function(userData) {
     return axios.post("/api/users/logout", userData);
   },
-  updateUser: function(id, userData) {
+  updateUser: function(id, token, userData) {
+    console.log("updateUser from usersAPI", userData);
     return axios.put("/api/users/" + id, userData);
   }
 };

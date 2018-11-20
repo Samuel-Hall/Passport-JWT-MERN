@@ -39,28 +39,69 @@ module.exports = {
     });
   },
   update: function(req, res) {
-    // ADD VALIDATION
-    db.User.findOne(
-      { username: req.body.username, _id: { $ne: req.params.id } },
-      (err, user) => {
-        if (err) {
-          console.log("User.js post error: ", err);
-        } else if (user) {
-          res.json({
-            error: `Sorry, already a user with the username: ${
-              req.body.username
-            }`
-          });
-        } else {
-          // Hashes password before updating db
-          req.body.password = bcrypt.hashSync(req.body.password, 10);
-          // updates with hashed password
-          db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-        }
-      }
+    console.log(
+      "attempting to update the following user information:",
+      req.body
     );
+    // Three cases:
+    /* Case 1: Both username and email are provided in the PUT request
+    --Find a db entry that has either the username OR the email, but the id does not match.
+    --Check which match was found.
+    --If username matches, send message that the username is already taken.
+    --If email matches, send message that the email is already taken.
+    --If no matches found, update the user data. */
+
+    /* Case 2: Only the username is provided in the PUT request.
+    --Find db entry that has the same username, but the id does not match.
+    --If a match is found, send message that the username is taken, otherwise update the user data. */
+    if (req.body.username && !req.body.email) {
+      db.User.findOne(
+        { username: req.body.username, _id: { $ne: req.params.id } },
+        (err, user) => {
+          if (err) {
+            console.log("User.js post error: ", err);
+          } else if (user) {
+            res.json({
+              error: `Sorry, already a user with the username: ${
+                req.body.username
+              }`
+            });
+          } else {
+            // Password resets will be handled in a different function altogether.
+            // Hashes password before updating db
+            // req.body.password = bcrypt.hashSync(req.body.password, 10);
+            db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
+              .then(dbModel => res.json(dbModel))
+              .catch(err => res.status(422).json(err));
+          }
+        }
+      );
+    }
+
+    /* Case 3: Only the email is provided in the PUT request
+    --Find db entry with matching email
+    --If a match is found, send message that the email is taken, otherwise update the user data. */
+    if (req.body.email && !req.body.username) {
+      db.User.findOne(
+        { email: req.body.email, _id: { $ne: req.params.id } },
+        (err, user) => {
+          if (err) {
+            console.log("User.js post error: ", err);
+          } else if (user) {
+            res.json({
+              error: `Sorry, already a user with the email: ${req.body.email}`
+            });
+          } else {
+            // Password resets will be handled in a different function altogether.
+            // Hashes password before updating db
+            // req.body.password = bcrypt.hashSync(req.body.password, 10);
+            db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
+              .then(dbModel => res.json(dbModel))
+              .catch(err => res.status(422).json(err));
+          }
+        }
+      );
+    }
   },
   remove: function(req, res) {
     db.User.findById({ _id: req.params.id })

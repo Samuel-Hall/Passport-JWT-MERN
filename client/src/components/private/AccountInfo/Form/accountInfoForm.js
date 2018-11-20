@@ -48,11 +48,11 @@ const AccountInfoForm = props => (
             value={props.newPassword}
             onChange={props.handleInputChange}
           /> */}
-    <button type="submit" onClick={props.toggleEditMode}>
-      Cancel
-    </button>
     <button type="submit" onClick={props.submitUpdate}>
       Save Changes
+    </button>
+    <button type="submit" onClick={props.toggleEditMode}>
+      Cancel
     </button>
   </form>
 );
