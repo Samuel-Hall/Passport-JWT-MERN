@@ -1,5 +1,4 @@
 const User = require("../database/models/user");
-// const jwt = require("jsonwebtoken");
 const LocalStrategy = require("passport-local").Strategy;
 
 const strategy = new LocalStrategy(

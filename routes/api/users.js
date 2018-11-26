@@ -73,7 +73,18 @@ router.route("/logout").post((req, res) => {
 router
   .route("/:id")
   .get(usersController.findById)
-  .put(usersController.update)
+  .put(jwtVerify.confirmToken, jwtVerify.verifyToken, usersController.update)
+  .delete(usersController.remove);
+
+// Matches with "/api/users/password/:id"
+router
+  .route("/password/:id")
+  .get(usersController.findById)
+  .put(
+    jwtVerify.confirmToken,
+    jwtVerify.verifyToken,
+    usersController.updatePassword
+  )
   .delete(usersController.remove);
 
 module.exports = router;

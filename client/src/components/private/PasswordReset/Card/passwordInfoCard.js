@@ -10,7 +10,7 @@ const PasswordInfoCard = props => (
         <PasswordInfoForm
           user={props.user}
           password={props.password}
-          submitUpdate={props.submitUpdate}
+          updatePassword={props.updatePassword}
           handleInputChange={props.handleInputChange}
           toggleEditMode={props.toggleEditMode}
         />

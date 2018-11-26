@@ -26,42 +26,44 @@ class Password extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  submitUpdate = event => {
+  updatePassword = event => {
     event.preventDefault();
     console.log("Password data:");
     console.table(this.state.password);
-    // Confirm if user wants to continue with updating their data.
-    /* if (
+    if (
       window.confirm(
         "Are you sure you want to update your account information?"
       )
     ) {
-      // Get JWT from local storage.
-      const token = localStorage.getItem("token");
-      const id = this.props.user.id;
-      const modUser = this.state.modUser;
-      // Data to be sent in PUT request below
-      let userData = {};
-      // Loop through modUser object and add key/value pairs to userData. If a key has an empty value, do not include it in userData
-      for (const key in modUser) {
-        if (modUser[key].trim() !== "") {
-          console.log("Adding value to userData", key, modUser[key]);
-          userData[key] = modUser[key];
-        } else {
-          console.log("It's nothing");
-        }
+      if (this.state.password.current.trim() === "") {
+        alert("Please enter your current password.");
+      } else if (this.state.password.new.trim() === "") {
+        alert("Please enter your new password.");
+      } else if (this.state.password.confirm.trim() === "") {
+        alert("Please confirm your new password.");
+      } else if (
+        this.state.password.new.trim() != this.state.password.confirm.trim()
+      ) {
+        alert(
+          "There was a mistake confirming your password. Please retype your new password and confirm."
+        );
+      } else {
+        // Get JWT from local storage.
+        const token = localStorage.getItem("token");
+        const id = this.props.user.id;
+        const passData = this.state.password;
+        console.log("passData", passData);
+        // PUT request to update the password. Passing in JWT to confirm validity prior to executing DB query.
+        UsersAPI.updatePassword(id, token, passData).then(res => {
+          if (!res.data.error) {
+            alert(`Password successfully updated!`);
+            window.location.reload();
+          } else {
+            alert(res.data.error);
+          }
+        });
       }
-      console.log("UserData", userData);
-      // PUT request to update the user info. Passing in JWT to confirm validity prior to executing DB query.
-      UsersAPI.updateUser(id, token, userData).then(res => {
-        if (!res.data.error) {
-          alert(`Password successfully updated!`);
-          window.location.reload();
-        } else {
-          alert(res.data.error);
-        }
-      });
-    } */
+    }
   };
 
   handleInputChange(event) {
@@ -89,7 +91,7 @@ class Password extends Component {
             toggleEditMode={this.toggleEditMode}
             user={this.props.user}
             password={this.state.password}
-            submitUpdate={this.submitUpdate}
+            updatePassword={this.updatePassword}
             handleInputChange={this.handleInputChange}
           />
         </Row>

@@ -24,7 +24,13 @@ export default {
     return axios.post("/api/users/logout", userData);
   },
   updateUser: function(id, token, userData) {
-    console.log("updateUser from usersAPI", userData);
-    return axios.put("/api/users/" + id, userData);
+    return axios.put("/api/users/" + id, userData, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+  },
+  updatePassword: function(id, token, passData) {
+    return axios.put("/api/users/password/" + id, passData, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
   }
 };

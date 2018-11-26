@@ -30,12 +30,13 @@ const PasswordInfoForm = props => (
       value={props.password.confirm}
       onChange={props.handleInputChange}
     />
-    <button type="submit" onClick={props.submitUpdate}>
+    <button type="submit" onClick={props.updatePassword}>
       Save Changes
     </button>
+    {/*  TODO: make this button simply clear the form and redirect to dashboard   
     <button type="submit" onClick={props.toggleEditMode}>
       Cancel
-    </button>
+    </button> */}
   </form>
 );
 

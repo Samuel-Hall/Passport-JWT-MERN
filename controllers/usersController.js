@@ -155,6 +155,39 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     }
   },
+  updatePassword: function(req, res) {
+    console.log(
+      "attempting to update the following Password information:",
+      req.body,
+      req.params.id
+    );
+    // Find the user by id provided in PUT request
+    db.User.findOne({ _id: req.params.id }, (err, user) => {
+      if (err) {
+        console.log("User.js post error: ", err);
+      } else if (user) {
+        // Decrypt the current password in the database and confirm the current password provided is the correct match. If no match, return an error.
+        const passMatch = bcrypt.compareSync(req.body.current, user.password);
+        console.log("comparing password match: " + passMatch);
+        if (!passMatch) {
+          res.json({
+            error: `Incorrect Password.`
+          });
+        } else if (passMatch) {
+          // Hashes password before updating db
+          console.log("req.body.new before encryption: " + req.body.new);
+          req.body.new = bcrypt.hashSync(req.body.new, 10);
+          console.log("req.body.new after encryption: " + req.body.new);
+          db.User.findOneAndUpdate(
+            { _id: req.params.id },
+            { password: req.body.new }
+          )
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+        }
+      }
+    });
+  },
   remove: function(req, res) {
     db.User.findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
