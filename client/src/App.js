@@ -11,7 +11,7 @@ import Login from "./pages/public/Login";
 import SignUp from "./pages/public/SignUp";
 import PrivateMaster from "./pages/private/PrivateMaster";
 import Account from "./pages/private/Account";
-import NoMatch from "./pages/public/NoMatch";
+import Password from "./pages/private/Password";
 // Import Private Route
 import PrivateRoute from "./components/private/PrivateRoute";
 // Import API
@@ -124,6 +124,12 @@ class App extends React.Component {
             <PrivateRoute
               path="/account"
               component={Account}
+              user={this.state.user}
+              handleLogout={this.handleLogout}
+            />
+            <PrivateRoute
+              path="/password"
+              component={Password}
               user={this.state.user}
               handleLogout={this.handleLogout}
             />

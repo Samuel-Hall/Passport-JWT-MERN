@@ -40,14 +40,6 @@ const AccountInfoForm = props => (
       value={props.modUser.email}
       onChange={props.handleInputChange}
     />
-    {/* <label htmlFor="password">Password:</label>
-          <input
-            placeholder="password"
-            type="password"
-            name="password"
-            value={props.newPassword}
-            onChange={props.handleInputChange}
-          /> */}
     <button type="submit" onClick={props.submitUpdate}>
       Save Changes
     </button>
